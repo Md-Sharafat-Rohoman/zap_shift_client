@@ -1,3 +1,4 @@
+
 const steps = [
   {
     id: 1,
@@ -24,4 +25,6 @@ const steps = [
       "From personal packages to business shipments — we deliver on time, every time.",
   },
 ];
+
+
 export default steps;

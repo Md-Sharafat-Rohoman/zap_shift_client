@@ -1,7 +1,7 @@
 import React from 'react'
 // import Swiper styles
 import 'swiper/css';
-import { Pagination } from 'swiper/modules';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import casio from "../../../assets/brands/casio.png"
 import amazon from "../../../assets/brands/amazon.png"
@@ -10,6 +10,7 @@ import star from "../../../assets/brands/star.png"
 import startPeople from "../../../assets/brands/start_people.png"
 import randstad from "../../../assets/brands/randstad.png"
 
+
 const brandsLogos = [casio, amazon, moonstar, star, startPeople, randstad,];
 
 export default function Brands() {
@@ -17,6 +18,7 @@ export default function Brands() {
         <Swiper
             slidesPerView={1}
             spaceBetween={10}
+            loop={true}
             autoplay={{
                 delay: 2500,
                 disableOnInteraction: false,
@@ -44,6 +46,7 @@ export default function Brands() {
                 },
             }}
             modules={[Pagination]}
+            modules={[Autoplay, Pagination, Navigation]}
             className="mySwiper my-10"
         >
             {
