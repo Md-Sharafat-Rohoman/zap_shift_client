@@ -3,14 +3,18 @@ import Banner from '../Banner/Banner'
 import Workflow from '../workflow/Workflow'
 import Brands from '../Brands/Brands'
 import FeaturesSection from '../FeaturesSection/FeaturesSection'
+import Reviews from '../Reviews/Reviews'
+
+const reviewsPromise = fetch("/reviews.json").then(res => res.json())
 
 export default function Home() {
     return (
         <div>
-            <Banner></Banner>
-            <Workflow></Workflow>
-            <Brands></Brands>
-            <FeaturesSection></FeaturesSection>
+            <Banner />
+            <Workflow />
+            <Brands />
+            <FeaturesSection />
+            <Reviews reviewsPromise={reviewsPromise} />
         </div>
     )
 }
