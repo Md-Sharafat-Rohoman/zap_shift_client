@@ -1,10 +1,11 @@
 import React, { use } from 'react'
-import { EffectCoverflow, Pagination } from 'swiper/modules';
+import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// import 'swiper/css';
-// import 'swiper/css/effect-coverflow';
-// import 'swiper/css/pagination';
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+import ReviewsCard from './ReviewsCard';
 
 
 export default function Reviews({ reviewsPromise }) {
@@ -12,54 +13,41 @@ export default function Reviews({ reviewsPromise }) {
     console.log(reviews)
     return (
         <div>
-            {/* <div className='text-center my-4'>
+            <div className='text-center my-24'>
                 <h2 className='text-3xl font-bold my-2'>What our customers are sayings</h2>
                 <p className='text-sm'>Enhance posture, mobility, and well-being effortlessly with Posture Pro. Achieve proper alignment, reduce pain, and strengthen your body with ease!</p>
-            </div> */}
+            </div>
             <>
                 <Swiper
+                    loop={true}
                     effect={'coverflow'}
                     grabCursor={true}
                     centeredSlides={true}
                     slidesPerView={3}
                     coverflowEffect={{
-                        rotate: 50,
-                        stretch: 0,
-                        depth: 100,
+                        rotate: 30,
+                        stretch: '50%',
+                        depth: 200,
                         modifier: 1,
+                        scale: 0.75,
                         slideShadows: true,
                     }}
-                    Pagination={true}
-                    modules={[EffectCoverflow, Pagination]}
-                    className="mySwiper"
+                    autoplay={{
+                        delay: 2000,
+                        disableOnInteraction: false,
+                    }}
+                    pagination={true}
+                    modules={[EffectCoverflow, Pagination, Autoplay]}
+                    className="mySwiper my-10"
                 >
-                    <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/abstract-1.jpg" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/abstract-2.jpg" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/abstract-3.jpg" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/abstract-4.jpg" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/abstract-5.jpg" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/abstract-6.jpg" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/abstract-7.jpg" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/abstract-8.jpg" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/abstract-9.jpg" />
-                    </SwiperSlide>
+                    {
+                        reviews.map(review => <SwiperSlide key={review.id}>
+                            <ReviewsCard review={review} />
+                        </SwiperSlide>)
+                    }
+
+
+
                 </Swiper>
             </>
         </div>

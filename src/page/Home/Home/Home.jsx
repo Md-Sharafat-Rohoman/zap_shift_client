@@ -4,6 +4,7 @@ import Workflow from '../workflow/Workflow'
 import Brands from '../Brands/Brands'
 import FeaturesSection from '../FeaturesSection/FeaturesSection'
 import Reviews from '../Reviews/Reviews'
+import FaqData from '../FaqData/FaqData'
 
 const reviewsPromise = fetch("/reviews.json").then(res => res.json())
 
@@ -15,6 +16,7 @@ export default function Home() {
             <Brands />
             <FeaturesSection />
             <Reviews reviewsPromise={reviewsPromise} />
+            <FaqData />
         </div>
     )
 }
